@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 public class Main
 {
-    public static void main(String[] args) throws SQLException
+    public static void main(String[] args)
     {
         ArrayList<String> client = SelectClients.selectByID(12);
         ArrayList<String> comparison = new ArrayList<>();
@@ -21,7 +21,7 @@ public class Main
         comparison.add(client.get(2));
         comparison.add(client.get(3));
         comparison.add(client.get(4));
-        comparison.set(0, "Antonio");
+        comparison.set(0, "Pepe");
         UpdateClients.update(12, client, comparison);
         ArrayList<String> newClient = SelectClients.selectByID(12);
         System.out.println("Registro anterior: " + client);

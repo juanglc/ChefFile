@@ -16,18 +16,10 @@ public class Database {
         try
         {
             con_obj=DriverManager.getConnection(url+dbName,user,password);
-            if(con_obj!=null)
-            {
-                System.out.println("Connection established properly");
-            }
-            else
-            {
-                System.out.println("Connection failed");
-            }
         }
         catch (Exception e)
         {
-            System.out.println(e.getMessage());
+            System.out.println("Connection failed");
         }
         return con_obj;
     }
