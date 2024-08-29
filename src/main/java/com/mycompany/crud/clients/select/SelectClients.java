@@ -9,11 +9,8 @@ public class SelectClients
 {
     static Scanner sc = new Scanner(System.in);
 
-    public static void select()
+    public static void select(String option)
     {
-        System.out.println("Ingrese el criterio de búsqueda: ");
-        String option = sc.nextLine();
-
         try
         {
             Connection connection = Database.connectDatabase();

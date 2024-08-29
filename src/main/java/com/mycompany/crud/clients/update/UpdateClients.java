@@ -10,29 +10,25 @@ public class UpdateClients
     public static void update(int ID, ArrayList<String> client, ArrayList<String> comparison)
     {
         Connection connection = Database.connectDatabase();
-        StringBuilder updateQuery = new StringBuilder("UPDATE clientes SET ");
+        String query = "UPDATE clientes SET ";
         String[] columns = {"primer_nombre", "primer_apellido", "segundo_apellido", "numero_telefonico", "correo_electronico"};
         boolean first = true;
-
         for (int i = 0; i < columns.length; i++)
         {
             if (!client.get(i).equals(comparison.get(i)))
             {
-                if (!first)
-                {
-                    updateQuery.append(", ");
+                if (!first) {
+                    query = query + ", ";
                 }
-                updateQuery.append(columns[i]).append(" = '").append(comparison.get(i)).append("'");
+                query = query + columns[i] + " = '" + comparison.get(i) + "'";
                 first = false;
             }
         }
-
-        updateQuery.append(" WHERE id_cliente = ").append(ID);
-
+        query = query + " WHERE id_cliente = " + (ID);
         try
         {
             Statement statement = connection.createStatement();
-            statement.executeUpdate(updateQuery.toString());
+            statement.executeUpdate(query);
             statement.close();
             System.out.println("Registro actualizado correctamente");
             connection.close();

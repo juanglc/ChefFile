@@ -11,19 +11,9 @@ public class InsertClients
 {
     static Scanner sc = new Scanner(System.in);
 
-    public static void insert()
+    public static void insert(String nombre, String primerApellido, String segundoApellido, String telefono, String correo)
     {
         Connection connection = Database.connectDatabase();
-        System.out.println("Ingrese el nombre: ");
-        String nombre = sc.nextLine();
-        System.out.println("Ingrese el primer apellido: ");
-        String primerApellido = sc.nextLine();
-        System.out.println("Ingrese el segundo apellido: ");
-        String segundoApellido = sc.nextLine();
-        System.out.println("Ingrese el número telefónico: ");
-        String telefono = sc.nextLine();
-        System.out.println("Ingrese el correo electrónico: ");
-        String correo = sc.nextLine();
         try
         {
             String query = "INSERT INTO clientes(primer_nombre, primer_apellido, segundo_apellido, numero_telefonico, correo_electronico) VALUES(?, ?, ?, ?, ?)";
