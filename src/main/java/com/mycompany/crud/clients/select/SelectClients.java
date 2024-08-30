@@ -9,7 +9,7 @@ public class SelectClients
 {
     static Scanner sc = new Scanner(System.in);
 
-    public static void select(String option)
+    public static void selectSearchBar(String option)
     {
         try
         {
