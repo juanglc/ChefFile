@@ -64,7 +64,7 @@ public class SelectClients
         }
     }
 
-    public static ArrayList selectByID(int ID)
+    public static ArrayList<String> selectByID(int ID)
     {
         ArrayList<String> cliente = new ArrayList<>();
         Connection connection = Database.connectDatabase();
