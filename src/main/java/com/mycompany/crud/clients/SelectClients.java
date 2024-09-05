@@ -1,4 +1,4 @@
-package com.mycompany.crud.clients.select;
+package com.mycompany.crud.clients;
 
 import com.mycompany.crud.connection.Database;
 import java.sql.*;

@@ -1,20 +1,17 @@
-package com.mycompany.crud.clients.delete;
+package com.mycompany.crud.recipes;
 
 import com.mycompany.crud.connection.Database;
 
 import java.sql.*;
-import java.util.Scanner;
 
-public class DeleteClients
+public class DeleteRecipes
 {
-    static Scanner sc = new Scanner(System.in);
-
     public static void delete(int ID)
     {
         Connection connection = Database.connectDatabase();
         try
         {
-            String query = "DELETE FROM clientes WHERE id_cliente = ?";
+            String query = "DELETE FROM recetas WHERE id_receta = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, ID);
 

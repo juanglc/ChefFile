@@ -1,4 +1,4 @@
-package com.mycompany.crud.clients.update;
+package com.mycompany.crud.clients;
 
 import com.mycompany.crud.connection.Database;
 
@@ -17,7 +17,8 @@ public class UpdateClients
         {
             if (!client.get(i).equals(comparison.get(i)))
             {
-                if (!first) {
+                if (!first)
+                {
                     query = query + ", ";
                 }
                 query = query + columns[i] + " = '" + comparison.get(i) + "'";

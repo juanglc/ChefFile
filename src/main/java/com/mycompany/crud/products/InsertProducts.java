@@ -1,4 +1,4 @@
-package com.mycompany.crud.products.insert;
+package com.mycompany.crud.products;
 
 import com.mycompany.crud.connection.Database;
 

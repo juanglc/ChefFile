@@ -1,4 +1,4 @@
-package com.mycompany.crud.products.delete;
+package com.mycompany.crud.products;
 
 import com.mycompany.crud.connection.Database;
 

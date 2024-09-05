@@ -1,5 +1,6 @@
-package com.mycompany.crud.products.select;
+package com.mycompany.crud.products;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import com.mycompany.crud.connection.Database;
 import java.sql.*;
@@ -61,5 +62,28 @@ public class SelectProducts
         {
             e.printStackTrace();
         }
+    }
+
+    public static ArrayList<String> selectArray(int ID)
+    {
+        ArrayList<String> product = new ArrayList<>();
+        Connection connection = Database.connectDatabase();
+        try
+        {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM productos WHERE id_producto = " + ID);
+            while (resultSet.next())
+            {
+                product.add(resultSet.getString("nombre"));
+                product.add(String.valueOf(resultSet.getInt("precio")));
+            }
+            statement.close();
+            connection.close();
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return product;
     }
 }
