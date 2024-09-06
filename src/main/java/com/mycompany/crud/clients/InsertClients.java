@@ -35,4 +35,19 @@ public class InsertClients
             e.printStackTrace();
         }
     }
+
+    public static void pedirDatos()
+    {
+        System.out.println("Ingrese el nombre del cliente: ");
+        String nombre = sc.nextLine();
+        System.out.println("Ingrese el primer apellido del cliente: ");
+        String primerApellido = sc.nextLine();
+        System.out.println("Ingrese el segundo apellido del cliente: ");
+        String segundoApellido = sc.nextLine();
+        System.out.println("Ingrese el número telefónico del cliente: ");
+        String telefono = sc.nextLine();
+        System.out.println("Ingrese el correo electrónico del cliente: ");
+        String correo = sc.nextLine();
+        insert(nombre, primerApellido, segundoApellido, telefono, correo);
+    }
 }

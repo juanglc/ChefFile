@@ -6,9 +6,15 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Scanner;
+
+import static com.mycompany.main.Main.verificarErrorInt;
 
 public class UpdateProducts
 {
+
+    static Scanner sc = new Scanner(System.in);
+
     public static void update(int ID, ArrayList<String> product, ArrayList<String> comparison)
     {
         Connection connection = Database.connectDatabase();
@@ -19,7 +25,12 @@ public class UpdateProducts
         {
             if (!product.get(i).equals(comparison.get(i)))
             {
-                if (!first) {
+                if (comparison.get(i).equals(""))
+                {
+                    continue;
+                }
+                if (!first)
+                {
                     query = query + ", ";
                 }
                 query = query + columns[i] + " = '" + comparison.get(i) + "'";
@@ -39,5 +50,19 @@ public class UpdateProducts
         {
             e.printStackTrace();
         }
+    }
+
+    public static void pedirDatos()
+    {
+        System.out.println("Ingrese el ID del producto a actualizar: ");
+        int ID = 0;
+        ID = verificarErrorInt(ID);
+        ArrayList<String> product = SelectProducts.selectArray(ID);
+        ArrayList<String> comparison = new ArrayList<String>();
+        System.out.println("Ingrese el nuevo nombre del producto: ");
+        comparison.add(sc.nextLine());
+        System.out.println("Ingrese el nuevo precio del producto: ");
+        comparison.add(sc.nextLine());
+        update(ID, product, comparison);
     }
 }

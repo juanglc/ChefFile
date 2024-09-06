@@ -5,28 +5,14 @@ import com.mycompany.crud.connection.Database;
 import java.sql.*;
 import java.util.Scanner;
 
+import static com.mycompany.main.Main.verificarErrorInt;
+
 public class DeleteProducts
 {
     static Scanner sc = new Scanner(System.in);
-    public static void delete()
+    public static void delete(int ID)
     {
-        int ID = 0;
         Connection connection = Database.connectDatabase();
-        while(true)
-        {
-            System.out.println("Ingrese el ID del producto que desea eliminar: ");
-            try
-            {
-                ID = sc.nextInt();
-                sc.nextLine();
-                break;
-            }
-            catch (Exception e)
-            {
-                System.out.println("Por favor, ingrese un número entero");
-                sc.nextLine();
-            }
-        }
         try
         {
             String query = "DELETE FROM productos WHERE id_producto = ?";
@@ -44,4 +30,11 @@ public class DeleteProducts
         }
     }
 
+    public static void pedirDatos()
+    {
+        System.out.println("Ingrese el ID del producto a eliminar: ");
+        int ID = 0;
+        ID = verificarErrorInt(ID);
+        delete(ID);
+    }
 }

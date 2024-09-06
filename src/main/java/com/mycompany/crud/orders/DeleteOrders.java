@@ -5,6 +5,8 @@ import com.mycompany.crud.connection.Database;
 import java.sql.*;
 import java.util.Scanner;
 
+import static com.mycompany.main.Main.verificarErrorInt;
+
 public class DeleteOrders
 {
     static Scanner sc = new Scanner(System.in);
@@ -32,26 +34,8 @@ public class DeleteOrders
     public static void pedirDatos()
     {
         System.out.println("Ingrese el ID del pedido que desea eliminar: ");
-        int ID;
-        while(true)
-        {
-            try
-            {
-                ID = sc.nextInt();
-                if(ID == 0 || ID < 0)
-                {
-                    System.out.println("Por favor, ingrese un número entero positivo");
-                    continue;
-                }
-                sc.nextLine();
-                break;
-            }
-            catch (Exception e)
-            {
-                System.out.println("Por favor, ingrese un número entero");
-                sc.nextLine();
-            }
-        }
+        int ID=0;
+        ID = verificarErrorInt(ID);
         delete(ID);
     }
 }

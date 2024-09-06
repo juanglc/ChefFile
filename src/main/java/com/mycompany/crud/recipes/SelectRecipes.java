@@ -3,9 +3,14 @@ package com.mycompany.crud.recipes;
 import com.mycompany.crud.connection.Database;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Scanner;
+
+import static com.mycompany.main.Main.verificarErrorInt;
 
 public class SelectRecipes
 {
+    static Scanner sc = new Scanner(System.in);
+
     public static void selectSearchBar(String option)
     {
         try
@@ -159,5 +164,34 @@ public class SelectRecipes
             e.printStackTrace();
         }
         return recipe;
+    }
+
+    public static void pedirDatos()
+    {
+        System.out.println("¿Qué deseas hacer?");
+        System.out.println("1. Buscar receta por nombre");
+        System.out.println("2. Ver todas las recetas");
+        System.out.println("3. Ver receta por ID");
+        System.out.println("4. Regresar al menú principal");
+        int opc = 0;
+        opc= verificarErrorInt(opc);
+        switch (opc)
+        {
+            case 1:
+                System.out.println("Ingresa el nombre de la receta que deseas buscar");
+                String option = "";
+                option = sc.nextLine();
+                selectSearchBar(option);
+                break;
+            case 2:
+                selectAll();
+                break;
+            case 3:
+                System.out.println("Ingresa el ID de la receta que deseas buscar");
+                int ID = 0;
+                ID = verificarErrorInt(ID);
+                selectByID(ID);
+                break;
+        }
     }
 }

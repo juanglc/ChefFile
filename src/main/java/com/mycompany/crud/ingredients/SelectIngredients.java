@@ -1,10 +1,16 @@
 package com.mycompany.crud.ingredients;
 
 import java.sql.*;
+import java.util.Scanner;
+
 import com.mycompany.crud.connection.Database;
 
-public class SelectIngrendients
+import static com.mycompany.main.Main.verificarErrorInt;
+
+public class SelectIngredients
 {
+    static Scanner sc = new Scanner(System.in);
+
     public static void selectByID(int ID)
     {
         Connection connection = Database.connectDatabase();
@@ -62,6 +68,33 @@ public class SelectIngrendients
         catch (SQLException e)
         {
             e.printStackTrace();
+        }
+    }
+
+    public static void pedirDatos()
+    {
+        System.out.println("¿Qué deseas hacer?");
+        System.out.println("1. Ver todos los ingredientes");
+        System.out.println("2. Ver un ingrediente por ID");
+        System.out.println("3. Buscar un ingrediente");
+        int opc = 0;
+        opc = verificarErrorInt(opc);
+        switch (opc)
+        {
+            case 1:
+                selectAll();
+                break;
+            case 2:
+                System.out.println("Ingresa el ID del ingrediente que deseas buscar");
+                int ID = 0;
+                ID = verificarErrorInt(ID);
+                selectByID(ID);
+                break;
+            case 3:
+                System.out.println("Ingresa el nombre del ingrediente que deseas buscar");
+                String option = sc.nextLine();
+                selectSearchBar(option);
+                break;
         }
     }
 }

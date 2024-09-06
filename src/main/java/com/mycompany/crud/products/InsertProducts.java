@@ -5,31 +5,15 @@ import com.mycompany.crud.connection.Database;
 import java.util.Scanner;
 import java.sql.*;
 
+import static com.mycompany.main.Main.verificarErrorInt;
+
 public class InsertProducts
 {
     static Scanner sc = new Scanner(System.in);
 
-    public static void insert()
+    public static void insert(String nombre, int precio)
     {
         Connection connection = Database.connectDatabase();
-        System.out.println("Ingrese el nombre del producto: ");
-        String nombre = sc.nextLine();
-        int precio = 0;
-        while(true)
-        {
-            System.out.println("Ingrese el precio del producto:");
-            try
-            {
-                precio = sc.nextInt();
-                sc.nextLine();
-                break;
-            }
-            catch (Exception e)
-            {
-                System.out.println("Por favor, ingrese un número entero");
-                sc.nextLine();
-            }
-        }
         try
         {
             String query = "INSERT INTO productos(nombre, precio) VALUES(?, ?)";
@@ -47,5 +31,15 @@ public class InsertProducts
         {
             e.printStackTrace();
         }
+    }
+
+    public static void pedirDatos()
+    {
+        System.out.println("Ingrese el nombre del producto: ");
+        String nombre = sc.nextLine();
+        System.out.println("Ingrese el precio del producto: ");
+        int precio = 0;
+        precio = verificarErrorInt(precio);
+        insert(nombre, precio);
     }
 }

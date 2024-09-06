@@ -4,16 +4,18 @@ import com.mycompany.crud.connection.Database;
 
 import java.sql.*;
 
+import static com.mycompany.main.Main.verificarErrorInt;
+
 public class UpdateIngredients
 {
-    public static void update(int ID,  float cantidad)
+    public static void update(int ID,  int cantidad)
     {
         Connection connection = Database.connectDatabase();
         try
         {
             String query = "UPDATE inventario_ingredientes SET cantidad = ? WHERE id_ingrediente = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setFloat(1, cantidad);
+            preparedStatement.setInt(1, cantidad);
             preparedStatement.setInt(2, ID);
 
             preparedStatement.executeUpdate();
@@ -27,4 +29,14 @@ public class UpdateIngredients
         }
     }
 
+    public static void pedirDatos()
+    {
+        System.out.println("Ingresa el ID del ingrediente que deseas actualizar");
+        int ID = 0;
+        ID = verificarErrorInt(ID);
+        System.out.println("Ingresa la nueva cantidad del ingrediente");
+        int cantidad = 0;
+        cantidad = verificarErrorInt(cantidad);
+        update(ID, cantidad);
+    }
 }

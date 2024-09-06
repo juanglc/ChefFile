@@ -4,9 +4,14 @@ import com.mycompany.crud.connection.Database;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Scanner;
+
+import static com.mycompany.main.Main.verificarErrorInt;
 
 public class UpdateClients
 {
+    static Scanner sc = new Scanner(System.in);
+
     public static void update(int ID, ArrayList<String> client, ArrayList<String> comparison)
     {
         Connection connection = Database.connectDatabase();
@@ -17,6 +22,10 @@ public class UpdateClients
         {
             if (!client.get(i).equals(comparison.get(i)))
             {
+                if (comparison.get(i).equals(""))
+                {
+                    continue;
+                }
                 if (!first)
                 {
                     query = query + ", ";
@@ -39,125 +48,24 @@ public class UpdateClients
             e.printStackTrace();
         }
     }
-    /*
-    public static void updateNombre(int ID)
+
+    public static void pedirDatos()
     {
-        Connection connection = Database.connectDatabase();
-        System.out.println("Ingrese el nombre: ");
-        String nombre = sc.nextLine();
-        try
-        {
-            Statement statement = connection.createStatement();
-            statement.executeUpdate("UPDATE clientes SET primer_nombre = '" + nombre + "' WHERE id_cliente = " + ID);
-                /*ResultSet resultSet = statement.executeQuery("SELECT * FROM clientes WHERE id_cliente = " + ID);
-                while (resultSet.next())
-                {
-                    System.out.println(resultSet.getInt("id_cliente") + " | " + resultSet.getString("primer_nombre") + " | " + resultSet.getString("primer_apellido") + " | " + resultSet.getString("segundo_apellido") + " | " + resultSet.getString("numero_telefonico") + " | " + resultSet.getString("correo_electronico"));
-                }
-            statement.close();
-            System.out.println("Registro actualizado correctamente");
-            connection.close();
-        }
-        catch(SQLException e)
-        {
-            e.printStackTrace();
-        }
+        System.out.println("Ingrese el ID del cliente a actualizar: ");
+        int ID = 0;
+        ID = verificarErrorInt(ID);
+        ArrayList<String> client = SelectClients.selectArray(ID);
+        ArrayList<String> comparison = new ArrayList<>();
+        System.out.println("Ingrese el primer nombre del cliente: ");
+        comparison.add(sc.nextLine());
+        System.out.println("Ingrese el primer apellido del cliente: ");
+        comparison.add(sc.nextLine());
+        System.out.println("Ingrese el segundo apellido del cliente: ");
+        comparison.add(sc.nextLine());
+        System.out.println("Ingrese el número telefónico del cliente: ");
+        comparison.add(sc.nextLine());
+        System.out.println("Ingrese el correo electrónico del cliente: ");
+        comparison.add(sc.nextLine());
+        update(ID, client, comparison);
     }
-
-    public static void updatePrimerApellido(int ID)
-    {
-        Connection connection = Database.connectDatabase();
-        System.out.println("Ingrese el apellido: ");
-        String apellido = sc.nextLine();
-        try
-        {
-            Statement statement = connection.createStatement();
-            statement.executeUpdate("UPDATE clientes SET primer_apellido = '" + apellido + "' WHERE id_cliente = " + ID);
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM clientes WHERE id_cliente = " + ID);
-            while (resultSet.next())
-            {
-                System.out.println(resultSet.getInt("id_cliente") + " | " + resultSet.getString("primer_nombre") + " | " + resultSet.getString("primer_apellido") + " | " + resultSet.getString("segundo_apellido") + " | " + resultSet.getString("numero_telefonico") + " | " + resultSet.getString("correo_electronico"));
-            }
-            statement.close();
-            System.out.println("Registro actualizado correctamente");
-            connection.close();
-        }
-        catch (SQLException e)
-        {
-            e.printStackTrace();
-        }
-    }
-
-    public static void updateSegundoApellido(int ID)
-    {
-        Connection connection = Database.connectDatabase();
-        System.out.println("Ingrese el segundo apellido: ");
-        String apellido = sc.nextLine();
-        try
-        {
-            Statement statement = connection.createStatement();
-            statement.executeUpdate("UPDATE clientes SET segundo_apellido = '" + apellido + "' WHERE id_cliente = " + ID);
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM clientes WHERE id_cliente = " + ID);
-            while (resultSet.next())
-            {
-                System.out.println(resultSet.getInt("id_cliente") + " | " + resultSet.getString("primer_nombre") + " | " + resultSet.getString("primer_apellido") + " | " + resultSet.getString("segundo_apellido") + " | " + resultSet.getString("numero_telefonico") + " | " + resultSet.getString("correo_electronico"));
-            }
-            statement.close();
-            System.out.println("Registro actualizado correctamente");
-            connection.close();
-        }
-        catch (SQLException e)
-        {
-            e.printStackTrace();
-        }
-    }
-
-    public static void updateTelefono(int ID)
-    {
-        Connection connection = Database.connectDatabase();
-        System.out.println("Ingrese el número telefónico: ");
-        String telefono = sc.nextLine();
-        try
-        {
-            Statement statement = connection.createStatement();
-            statement.executeUpdate("UPDATE clientes SET numero_telefonico = '" + telefono + "' WHERE id_cliente = " + ID);
-                ResultSet resultSet = statement.executeQuery("SELECT * FROM clientes WHERE id_cliente = " + ID);
-                while (resultSet.next())
-                {
-                    System.out.println(resultSet.getInt("id_cliente") + " | " + resultSet.getString("primer_nombre") + " | " + resultSet.getString("primer_apellido") + " | " + resultSet.getString("segundo_apellido") + " | " + resultSet.getString("numero_telefonico") + " | " + resultSet.getString("correo_electronico"));
-                }
-            statement.close();
-            System.out.println("Registro actualizado correctamente");
-            connection.close();
-        }
-        catch (SQLException e)
-        {
-            e.printStackTrace();
-        }
-    }
-
-    public static void updateCorreo(int ID)
-    {
-        Connection connection = Database.connectDatabase();
-        System.out.println("Ingrese el correo electrónico: ");
-        String correo = sc.nextLine();
-        try
-        {
-            Statement statement = connection.createStatement();
-            statement.executeUpdate("UPDATE clientes SET correo_electronico = '" + correo + "' WHERE id_cliente = " + ID);
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM clientes WHERE id_cliente = " + ID);
-            while (resultSet.next())
-            {
-                System.out.println(resultSet.getInt("id_cliente") + " | " + resultSet.getString("primer_nombre") + " | " + resultSet.getString("primer_apellido") + " | " + resultSet.getString("segundo_apellido") + " | " + resultSet.getString("numero_telefonico") + " | " + resultSet.getString("correo_electronico"));
-            }
-
-            System.out.println("Registro actualizado correctamente");
-            statement.close();
-            connection.close();
-        }
-        catch (SQLException e)
-        {
-            e.printStackTrace();
-        }
-    }*/
 }

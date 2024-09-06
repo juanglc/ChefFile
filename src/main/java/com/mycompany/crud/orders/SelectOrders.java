@@ -4,8 +4,14 @@ import com.mycompany.crud.connection.Database;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
-public class SelectOrders {
+import static com.mycompany.main.Main.verificarErrorInt;
+
+public class SelectOrders
+{
+    static Scanner sc = new Scanner(System.in);
+
     public static void selectAll() {
         Connection connection = Database.connectDatabase();
         try {
@@ -211,5 +217,55 @@ public class SelectOrders {
             e.printStackTrace();
         }
         return order;
+    }
+
+    public static void pedirDatos()
+    {
+        System.out.println("¿Qué operación de consulta quiere realizar?");
+        System.out.println("1. Ver todos los pedidos");
+        System.out.println("2. Ver un pedido por ID");
+        System.out.println("3. Ver pedidos por estado activo");
+        System.out.println("4. Ver pedidos por fecha de creación");
+        System.out.println("5. Ver pedidos por fecha de entrega");
+        System.out.println("6. Ver pedidos por ID de cliente");
+        System.out.println("7. Ver pedidos por ID de producto");
+        System.out.println("8. Regresar al menú principal");
+        int opc = 0;
+        opc = verificarErrorInt(opc);
+        switch (opc)
+        {
+            case 1:
+                selectAll();
+                break;
+            case 2:
+                System.out.println("Ingrese el ID del pedido a consultar: ");
+                int ID = 0;
+                ID = verificarErrorInt(ID);
+                selectByID(ID);
+                break;
+            case 3:
+                selectByStatus();
+                break;
+            case 4:
+                selectByCreationDate();
+                break;
+            case 5:
+                selectByDueDate();
+                break;
+            case 6:
+                System.out.println("Ingrese el ID del cliente a consultar: ");
+                int IDCliente = 0;
+                IDCliente = verificarErrorInt(IDCliente);
+                selectByClient(IDCliente);
+                break;
+            case 7:
+                System.out.println("Ingrese el ID del producto a consultar: ");
+                int IDProducto = 0;
+                IDProducto = verificarErrorInt(IDProducto);
+                selectByProduct(IDProducto);
+                break;
+            case 8:
+                break;
+        }
     }
 }

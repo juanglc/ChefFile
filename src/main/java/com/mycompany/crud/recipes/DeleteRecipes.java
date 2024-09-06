@@ -4,6 +4,8 @@ import com.mycompany.crud.connection.Database;
 
 import java.sql.*;
 
+import static com.mycompany.main.Main.verificarErrorInt;
+
 public class DeleteRecipes
 {
     public static void delete(int ID)
@@ -24,5 +26,13 @@ public class DeleteRecipes
         {
             e.printStackTrace();
         }
+    }
+
+    public static void pedirDatos()
+    {
+        System.out.println("Ingresa el ID de la receta que deseas eliminar");
+        int ID = 0;
+        verificarErrorInt(ID);
+        delete(ID);
     }
 }

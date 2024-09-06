@@ -5,6 +5,8 @@ import com.mycompany.crud.connection.Database;
 import java.sql.*;
 import java.util.Scanner;
 
+import static com.mycompany.main.Main.verificarErrorInt;
+
 public class InsertOrders
 {
     static Scanner sc = new Scanner(System.in);
@@ -40,22 +42,24 @@ public class InsertOrders
     public static void pedirDatos()
     {
         System.out.println("Ingresa el ID del cliente: ");
-        int idCliente = sc.nextInt();
-        sc.nextLine();
+        int idCliente = 0;
+        idCliente = verificarErrorInt(idCliente);
         Date fechaCreacion = new Date(System.currentTimeMillis());
         System.out.println("Ingresa la fecha de entrega (yyyy-mm-dd hh:mm:ss): ");
         String fechaEntrega = sc.nextLine();
         System.out.println("Ingresa el ID del primer producto: ");
-        int producto1 = sc.nextInt();
-        sc.nextLine();
+        int producto1 = 0;
+        producto1 = verificarErrorInt(producto1);
         System.out.println("Ingresa el ID del segundo producto (opcional): ");
         String producto2Str = sc.nextLine();
         Integer producto2 = null;
-        if (!producto2Str.isEmpty()) {
+        if (!producto2Str.equals(""))
+        {
             producto2 = Integer.parseInt(producto2Str);
         }
         System.out.println("Ingresa el estado del pedido (1 = pendiente, 2 = entregado): ");
-        int estadoPedido = sc.nextInt();
+        int estadoPedido = 0;
+        estadoPedido = verificarErrorInt(estadoPedido);
         sc.nextLine();
         System.out.println("Ingresa la dirección de entrega: ");
         String direccionEntrega = sc.nextLine();

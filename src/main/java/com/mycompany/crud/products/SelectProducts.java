@@ -5,16 +5,14 @@ import java.util.Scanner;
 import com.mycompany.crud.connection.Database;
 import java.sql.*;
 
+import static com.mycompany.main.Main.verificarErrorInt;
+
 public class SelectProducts
 {
     static Scanner sc = new Scanner(System.in);
 
-    public static void select()
+    public static void selectSearchBar(String option)
     {
-
-        System.out.println("Ingrese la opción de búsqueda: ");
-        String option = sc.nextLine();
-
         try
         {
             Connection connection = Database.connectDatabase();
@@ -64,6 +62,26 @@ public class SelectProducts
         }
     }
 
+    public static void selectByID(int ID)
+    {
+        Connection connection = Database.connectDatabase();
+        try
+        {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM productos WHERE id_producto = " + ID);
+            while (resultSet.next())
+            {
+                System.out.println(resultSet.getInt("id_producto") + " | " + resultSet.getString("nombre") + " | " + resultSet.getInt("precio"));
+            }
+            statement.close();
+            connection.close();
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
     public static ArrayList<String> selectArray(int ID)
     {
         ArrayList<String> product = new ArrayList<>();
@@ -85,5 +103,33 @@ public class SelectProducts
             e.printStackTrace();
         }
         return product;
+    }
+
+    public static void pedirDatos()
+    {
+        System.out.println("¿Qué deseas hacer?");
+        System.out.println("1. Buscar un producto por su ID");
+        System.out.println("2. Ver todos los productos");
+        System.out.println("3. Buscar un producto por su nombre o precio");
+        System.out.println("4. Regresar al menú principal");
+        int opc = 0;
+        opc = verificarErrorInt(opc);
+        switch (opc)
+        {
+            case 1:
+                System.out.println("Ingrese el ID del producto que desea buscar: ");
+                int ID = 0;
+                ID = verificarErrorInt(ID);
+                selectByID(ID);
+                break;
+            case 2:
+                selectAll();
+                break;
+            case 3:
+                System.out.println("Ingrese la opción de búsqueda: ");
+                String option = sc.nextLine();
+                selectSearchBar(option);
+                break;
+        }
     }
 }

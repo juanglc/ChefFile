@@ -5,6 +5,8 @@ import com.mycompany.crud.connection.Database;
 import java.sql.*;
 import java.util.Scanner;
 
+import static com.mycompany.main.Main.verificarErrorInt;
+
 public class DeleteClients
 {
     static Scanner sc = new Scanner(System.in);
@@ -27,5 +29,13 @@ public class DeleteClients
         {
             e.printStackTrace();
         }
+    }
+
+    public static void pedirDatos()
+    {
+        System.out.println("Ingrese el ID del cliente que desea eliminar: ");
+        int ID = 0;
+        ID = verificarErrorInt(ID);
+        delete(ID);
     }
 }
