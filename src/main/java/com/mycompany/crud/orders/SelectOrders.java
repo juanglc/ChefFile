@@ -4,13 +4,11 @@ import com.mycompany.crud.connection.Database;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import static com.mycompany.main.Main.verificarErrorInt;
 
 public class SelectOrders
 {
-    static Scanner sc = new Scanner(System.in);
 
     public static void selectAll() {
         Connection connection = Database.connectDatabase();
@@ -31,7 +29,7 @@ public class SelectOrders
             statement.close();
             connection.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            e.getErrorCode();
         }
     }
 
@@ -54,7 +52,7 @@ public class SelectOrders
             statement.close();
             connection.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            e.getErrorCode();
         }
     }
 
@@ -77,7 +75,7 @@ public class SelectOrders
             statement.close();
             connection.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            e.getErrorCode();
         }
     }
 
@@ -104,7 +102,7 @@ public class SelectOrders
         }
         catch (SQLException e)
         {
-            e.printStackTrace();
+            e.getErrorCode();
         }
     }
 
@@ -132,7 +130,7 @@ public class SelectOrders
         }
         catch (SQLException e)
         {
-            e.printStackTrace();
+            e.getErrorCode();
         }
     }
 
@@ -160,7 +158,7 @@ public class SelectOrders
         }
         catch (SQLException e)
         {
-            e.printStackTrace();
+            e.getErrorCode();
         }
     }
 
@@ -187,7 +185,7 @@ public class SelectOrders
         }
         catch (SQLException e)
         {
-            e.printStackTrace();
+            e.getErrorCode();
         }
     }
 
@@ -214,7 +212,7 @@ public class SelectOrders
         }
         catch (SQLException e)
         {
-            e.printStackTrace();
+            e.getErrorCode();
         }
         return order;
     }

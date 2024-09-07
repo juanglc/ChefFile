@@ -32,7 +32,7 @@ public class InsertClients
         }
         catch (SQLException e)
         {
-            e.printStackTrace();
+            e.getErrorCode();
         }
     }
 

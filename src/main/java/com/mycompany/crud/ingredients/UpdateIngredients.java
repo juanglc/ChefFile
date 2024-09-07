@@ -5,6 +5,7 @@ import com.mycompany.crud.connection.Database;
 import java.sql.*;
 
 import static com.mycompany.main.Main.verificarErrorInt;
+import static com.mycompany.main.Main.verificarIngrediente;
 
 public class UpdateIngredients
 {
@@ -25,7 +26,7 @@ public class UpdateIngredients
         }
         catch (SQLException e)
         {
-            e.printStackTrace();
+            e.getErrorCode();
         }
     }
 
@@ -36,7 +37,7 @@ public class UpdateIngredients
         ID = verificarErrorInt(ID);
         System.out.println("Ingresa la nueva cantidad del ingrediente");
         int cantidad = 0;
-        cantidad = verificarErrorInt(cantidad);
+        cantidad = verificarIngrediente(cantidad);
         update(ID, cantidad);
     }
 }

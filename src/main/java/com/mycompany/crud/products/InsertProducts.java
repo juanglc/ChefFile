@@ -29,7 +29,7 @@ public class InsertProducts
         }
         catch (SQLException e)
         {
-            e.printStackTrace();
+            e.getErrorCode();
         }
     }
 

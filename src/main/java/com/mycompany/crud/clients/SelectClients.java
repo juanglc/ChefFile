@@ -39,7 +39,7 @@ public class SelectClients
         }
         catch (SQLException e)
         {
-            e.printStackTrace();
+            e.getErrorCode();
         }
     }
 
@@ -61,7 +61,7 @@ public class SelectClients
         }
         catch(SQLException e)
         {
-            e.printStackTrace();
+            e.getErrorCode();
         }
     }
 
@@ -81,7 +81,7 @@ public class SelectClients
         }
         catch(SQLException e)
         {
-            e.printStackTrace();
+            e.getErrorCode();
         }
     }
 
@@ -106,7 +106,7 @@ public class SelectClients
         }
         catch(SQLException e)
         {
-            e.printStackTrace();
+            e.getErrorCode();
         }
         return cliente;
     }

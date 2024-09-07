@@ -13,9 +13,9 @@ public class SelectRecipes
 
     public static void selectSearchBar(String option)
     {
+        Connection connection = Database.connectDatabase();
         try
         {
-            Connection connection = Database.connectDatabase();
             String query = "SELECT * FROM recetas_productos WHERE nombre LIKE ?;";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             String likeOption = "%" + option + "%";
@@ -48,7 +48,7 @@ public class SelectRecipes
         }
         catch (SQLException e)
         {
-            e.printStackTrace();
+            e.getErrorCode();
         }
     }
 
@@ -87,7 +87,7 @@ public class SelectRecipes
         }
         catch (SQLException e)
         {
-            e.printStackTrace();
+            e.getErrorCode();
         }
     }
 
@@ -123,7 +123,7 @@ public class SelectRecipes
         }
         catch (SQLException e)
         {
-            e.printStackTrace();
+            e.getErrorCode();
         }
     }
 
@@ -161,7 +161,7 @@ public class SelectRecipes
         }
         catch (SQLException e)
         {
-            e.printStackTrace();
+            e.getErrorCode();
         }
         return recipe;
     }

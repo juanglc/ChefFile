@@ -3,13 +3,11 @@ package com.mycompany.crud.clients;
 import com.mycompany.crud.connection.Database;
 
 import java.sql.*;
-import java.util.Scanner;
 
 import static com.mycompany.main.Main.verificarErrorInt;
 
 public class DeleteClients
 {
-    static Scanner sc = new Scanner(System.in);
 
     public static void delete(int ID)
     {
@@ -27,7 +25,7 @@ public class DeleteClients
         }
         catch (SQLException e)
         {
-            e.printStackTrace();
+            e.getErrorCode();
         }
     }
 

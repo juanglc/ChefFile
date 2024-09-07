@@ -21,12 +21,16 @@ public class Main
         System.out.println("1. Sí");
         System.out.println("2. No");
         int opc = 0;
-        opc = verificarErrorInt(opc);
-        if(opc == 1)
+        while(true)
         {
-            return true;
+            opc = verificarErrorInt(opc);
+            if(opc == 1 || opc == 2)
+            {
+                break;
+            }
+            System.out.println("Opción inválida");
         }
-        return false;
+        return opc == 1;
     }
 
     public static boolean verificarDelete()
@@ -35,12 +39,16 @@ public class Main
         System.out.println("1. Sí");
         System.out.println("2. No");
         int opc = 0;
-        opc = verificarErrorInt(opc);
-        if(opc == 1)
+        while(true)
         {
-            return true;
+            opc = verificarErrorInt(opc);
+            if(opc == 1 || opc == 2)
+            {
+                break;
+            }
+            System.out.println("Opción inválida");
         }
-        return false;
+        return opc == 1;
     }
 
     public static boolean verificarSelect()
@@ -49,12 +57,41 @@ public class Main
         System.out.println("1. Sí");
         System.out.println("2. No");
         int opc = 0;
-        opc = verificarErrorInt(opc);
-        if(opc == 1)
+        while(true)
         {
-            return true;
+            opc = verificarErrorInt(opc);
+            if(opc == 1 || opc == 2)
+            {
+                break;
+            }
+            System.out.println("Opción inválida");
         }
-        return false;
+        return opc == 1;
+    }
+
+    public static int verificarIngrediente(int variable)
+    {
+        while(true)
+        {
+            try
+            {
+                variable = sc.nextInt();
+                if(variable < 0)
+                {
+                    System.out.println("Por favor, ingrese un número mayor o igual que cero");
+                    sc.nextLine();
+                    continue;
+                }
+                sc.nextLine();
+                break;
+            }
+            catch (Exception e)
+            {
+                System.out.println("Por favor, ingrese un número entero");
+                sc.nextLine();
+            }
+        }
+        return variable;
     }
 
     public static boolean verificarInsert()
@@ -63,12 +100,16 @@ public class Main
         System.out.println("1. Sí");
         System.out.println("2. No");
         int opc = 0;
-        opc = verificarErrorInt(opc);
-        if(opc == 1)
+        while(true)
         {
-            return true;
+            opc = verificarErrorInt(opc);
+            if(opc == 1 || opc == 2)
+            {
+                break;
+            }
+            System.out.println("Opción inválida");
         }
-        return false;
+        return opc == 1;
     }
 
     public static boolean verificarTabla()
@@ -77,12 +118,16 @@ public class Main
         System.out.println("1. Sí");
         System.out.println("2. No");
         int opc = 0;
-        opc = verificarErrorInt(opc);
-        if(opc == 1)
+        while(true)
         {
-            return true;
+            opc = verificarErrorInt(opc);
+            if(opc == 1 || opc == 2)
+            {
+                break;
+            }
+            System.out.println("Opción inválida");
         }
-        return false;
+        return opc == 1;
     }
 
     public static boolean verificarMenu()
@@ -91,12 +136,16 @@ public class Main
         System.out.println("1. Sí");
         System.out.println("2. No");
         int opc = 0;
-        opc = verificarErrorInt(opc);
-        if(opc == 1)
+        while(true)
         {
-            return true;
+            opc = verificarErrorInt(opc);
+            if(opc == 1 || opc == 2)
+            {
+                break;
+            }
+            System.out.println("Opción inválida");
         }
-        return false;
+        return opc == 1;
     }
 
     public static int verificarErrorInt(int variable)
@@ -106,9 +155,9 @@ public class Main
             try
             {
                 variable = sc.nextInt();
-                if(variable < 0)
+                if(variable <= 0)
                 {
-                    System.out.println("Por favor, ingrese un número entero positivo");
+                    System.out.println("Por favor, ingrese un número mayor que cero");
                     sc.nextLine();
                     continue;
                 }
@@ -137,7 +186,7 @@ public class Main
             while (true)
             {
                 opc = verificarErrorInt(opc);
-                if (opc >= 1 && opc <= 5)
+                if (opc <= 5)
                 {
                     break;
                 }
@@ -166,7 +215,7 @@ public class Main
                     } while (verificarSelect());
                     break;
                 case 5:
-                    break;
+                    return;
             }
         } while (verificarTabla());
     }
@@ -184,7 +233,7 @@ public class Main
             while (true)
             {
                 opc = verificarErrorInt(opc);
-                if (opc >= 1 && opc <= 5)
+                if (opc <= 5)
                 {
                     break;
                 }
@@ -213,7 +262,7 @@ public class Main
                     } while (verificarSelect());
                     break;
                 case 5:
-                    break;
+                    return;
             }
         } while (verificarTabla());
     }
@@ -231,7 +280,7 @@ public class Main
             while (true)
             {
                 opc = verificarErrorInt(opc);
-                if (opc >= 1 && opc <= 5)
+                if (opc <= 5)
                 {
                     break;
                 }
@@ -260,7 +309,7 @@ public class Main
                     } while (verificarSelect());
                     break;
                 case 5:
-                    break;
+                    return;
             }
         } while (verificarTabla());
     }
@@ -278,7 +327,7 @@ public class Main
             while (true)
             {
                 opc = verificarErrorInt(opc);
-                if (opc >= 1 && opc <= 5)
+                if (opc <= 5)
                 {
                     break;
                 }
@@ -307,7 +356,7 @@ public class Main
                     } while (verificarSelect());
                     break;
                 case 5:
-                    break;
+                    return;
             }
         } while (verificarTabla());
     }
@@ -323,7 +372,7 @@ public class Main
             while (true)
             {
                 opc = verificarErrorInt(opc);
-                if (opc >= 1 && opc <= 3)
+                if (opc <= 3)
                 {
                     break;
                 }
@@ -342,7 +391,7 @@ public class Main
                     } while (verificarUpdate());
                     break;
                 case 3:
-                    break;
+                    return;
             }
         } while (verificarTabla());
     }
@@ -361,7 +410,7 @@ public class Main
             while (true)
             {
                 opc = verificarErrorInt(opc);
-                if (opc >= 1 && opc <= 6)
+                if (opc <= 6)
                 {
                     break;
                 }
@@ -385,7 +434,7 @@ public class Main
                     menuIngredientes();
                     break;
                 case 6:
-                    break;
+                    return;
             }
         } while (verificarMenu());
     }

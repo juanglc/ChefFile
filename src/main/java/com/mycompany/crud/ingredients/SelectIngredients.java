@@ -28,7 +28,7 @@ public class SelectIngredients
         }
         catch (SQLException e)
         {
-            e.printStackTrace();
+            e.getErrorCode();
         }
     }
 
@@ -49,7 +49,7 @@ public class SelectIngredients
         }
         catch (SQLException e)
         {
-            e.printStackTrace();
+            e.getErrorCode();
         }
     }
 
@@ -63,11 +63,11 @@ public class SelectIngredients
             preparedStatement.setString(1, likeOption);
             preparedStatement.setString(2, likeOption);
             preparedStatement.setString(3, likeOption);
-            ResultSet resultSet = preparedStatement.executeQuery();
+            preparedStatement.executeQuery();
         }
         catch (SQLException e)
         {
-            e.printStackTrace();
+            e.getErrorCode();
         }
     }
 

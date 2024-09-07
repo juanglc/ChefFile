@@ -35,7 +35,7 @@ public class InsertOrders
             preparedStatement.close();
             connection.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            e.getErrorCode();
         }
     }
 
@@ -53,14 +53,13 @@ public class InsertOrders
         System.out.println("Ingresa el ID del segundo producto (opcional): ");
         String producto2Str = sc.nextLine();
         Integer producto2 = null;
-        if (!producto2Str.equals(""))
+        if (!producto2Str.isEmpty())
         {
             producto2 = Integer.parseInt(producto2Str);
         }
         System.out.println("Ingresa el estado del pedido (1 = pendiente, 2 = entregado): ");
         int estadoPedido = 0;
         estadoPedido = verificarErrorInt(estadoPedido);
-        sc.nextLine();
         System.out.println("Ingresa la dirección de entrega: ");
         String direccionEntrega = sc.nextLine();
         insert(idCliente, fechaCreacion, Timestamp.valueOf(fechaEntrega), producto1, producto2, estadoPedido, direccionEntrega);

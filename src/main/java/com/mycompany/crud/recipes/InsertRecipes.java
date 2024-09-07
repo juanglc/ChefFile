@@ -2,14 +2,13 @@ package com.mycompany.crud.recipes;
 
 import com.mycompany.crud.connection.Database;
 import java.sql.*;
-import java.util.Scanner;
 
 import static com.mycompany.main.Main.verificarErrorInt;
+import static com.mycompany.main.Main.verificarIngrediente;
 
 
 public class InsertRecipes
 {
-    static Scanner sc = new Scanner(System.in);
 
     public static void insert(int idProducto, int harina, int azucarBlanca, int azucarMorena, int polvoHornear, int canelaPolvo, int sal, int cacaoPolvo, int nueces, int chocolateBlanco, int chocolate, int mantequilla, int huevo, int naranja, int leche, int esenciaVainilla, int cremaLeche, int limon)
     {
@@ -44,7 +43,7 @@ public class InsertRecipes
         }
         catch (SQLException e)
         {
-            e.printStackTrace();
+            e.getErrorCode();
         }
     }
 
@@ -55,55 +54,55 @@ public class InsertRecipes
         ID = verificarErrorInt(ID);
         System.out.println("Ingresa la cantidad de harina (si no utilizará este ingrediente, ingrese 0)");
         int harina = 0;
-        harina = verificarErrorInt(harina);
+        harina = verificarIngrediente(harina);
         System.out.println("Ingresa la cantidad de azúcar blanca (si no utilizará este ingrediente, ingrese 0)");
         int azucarBlanca = 0;
-        azucarBlanca = verificarErrorInt(azucarBlanca);
+        azucarBlanca = verificarIngrediente(azucarBlanca);
         System.out.println("Ingresa la cantidad de azúcar morena (si no utilizará este ingrediente, ingrese 0)");
         int azucarMorena = 0;
-        azucarMorena = verificarErrorInt(azucarMorena);
+        azucarMorena = verificarIngrediente(azucarMorena);
         System.out.println("Ingresa la cantidad de polvo de hornear (si no utilizará este ingrediente, ingrese 0)");
         int polvoHornear = 0;
-        polvoHornear = verificarErrorInt(polvoHornear);
+        polvoHornear = verificarIngrediente(polvoHornear);
         System.out.println("Ingresa la cantidad de canela en polvo (si no utilizará este ingrediente, ingrese 0)");
         int canelaPolvo = 0;
-        canelaPolvo = verificarErrorInt(canelaPolvo);
+        canelaPolvo = verificarIngrediente(canelaPolvo);
         System.out.println("Ingresa la cantidad de sal (si no utilizará este ingrediente, ingrese 0)");
         int sal = 0;
-        sal = verificarErrorInt(sal);
+        sal = verificarIngrediente(sal);
         System.out.println("Ingresa la cantidad de cacao en polvo (si no utilizará este ingrediente, ingrese 0)");
         int cacaoPolvo = 0;
-        cacaoPolvo = verificarErrorInt(cacaoPolvo);
+        cacaoPolvo = verificarIngrediente(cacaoPolvo);
         System.out.println("Ingresa la cantidad de nueces (si no utilizará este ingrediente, ingrese 0)");
         int nueces = 0;
-        nueces = verificarErrorInt(nueces);
+        nueces = verificarIngrediente(nueces);
         System.out.println("Ingresa la cantidad de chocolate blanco (si no utilizará este ingrediente, ingrese 0)");
         int chocolateBlanco = 0;
-        chocolateBlanco = verificarErrorInt(chocolateBlanco);
+        chocolateBlanco = verificarIngrediente(chocolateBlanco);
         System.out.println("Ingresa la cantidad de chocolate (si no utilizará este ingrediente, ingrese 0)");
         int chocolate = 0;
-        chocolate = verificarErrorInt(chocolate);
+        chocolate = verificarIngrediente(chocolate);
         System.out.println("Ingresa la cantidad de mantequilla (si no utilizará este ingrediente, ingrese 0)");
         int mantequilla = 0;
-        mantequilla = verificarErrorInt(mantequilla);
+        mantequilla = verificarIngrediente(mantequilla);
         System.out.println("Ingresa la cantidad de huevo (si no utilizará este ingrediente, ingrese 0)");
         int huevo = 0;
-        huevo = verificarErrorInt(huevo);
+        huevo = verificarIngrediente(huevo);
         System.out.println("Ingresa la cantidad de naranja (si no utilizará este ingrediente, ingrese 0)");
         int naranja = 0;
-        naranja = verificarErrorInt(naranja);
+        naranja = verificarIngrediente(naranja);
         System.out.println("Ingresa la cantidad de leche (si no utilizará este ingrediente, ingrese 0)");
         int leche = 0;
-        leche = verificarErrorInt(leche);
+        leche = verificarIngrediente(leche);
         System.out.println("Ingresa la cantidad de esencia de vainilla (si no utilizará este ingrediente, ingrese 0)");
         int esenciaVainilla = 0;
-        esenciaVainilla = verificarErrorInt(esenciaVainilla);
+        esenciaVainilla = verificarIngrediente(esenciaVainilla);
         System.out.println("Ingresa la cantidad de crema de leche (si no utilizará este ingrediente, ingrese 0)");
         int cremaLeche = 0;
-        cremaLeche = verificarErrorInt(cremaLeche);
+        cremaLeche = verificarIngrediente(cremaLeche);
         System.out.println("Ingresa la cantidad de limón (si no utilizará este ingrediente, ingrese 0)");
         int limon = 0;
-        limon = verificarErrorInt(limon);
+        limon = verificarIngrediente(limon);
         insert(ID, harina, azucarBlanca, azucarMorena, polvoHornear, canelaPolvo, sal, cacaoPolvo, nueces, chocolateBlanco, chocolate, mantequilla, huevo, naranja, leche, esenciaVainilla, cremaLeche, limon);
     }
 }

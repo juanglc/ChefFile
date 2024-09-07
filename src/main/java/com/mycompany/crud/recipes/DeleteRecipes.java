@@ -24,7 +24,7 @@ public class DeleteRecipes
         }
         catch (SQLException e)
         {
-            e.printStackTrace();
+            e.getErrorCode();
         }
     }
 

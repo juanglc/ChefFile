@@ -22,7 +22,7 @@ public class UpdateClients
         {
             if (!client.get(i).equals(comparison.get(i)))
             {
-                if (comparison.get(i).equals(""))
+                if (comparison.get(i).isEmpty())
                 {
                     continue;
                 }
@@ -45,7 +45,7 @@ public class UpdateClients
         }
         catch (SQLException e)
         {
-            e.printStackTrace();
+            e.getErrorCode();
         }
     }
 

@@ -3,13 +3,11 @@ package com.mycompany.crud.orders;
 import com.mycompany.crud.connection.Database;
 
 import java.sql.*;
-import java.util.Scanner;
 
 import static com.mycompany.main.Main.verificarErrorInt;
 
 public class DeleteOrders
 {
-    static Scanner sc = new Scanner(System.in);
 
     public static void delete(int ID)
     {

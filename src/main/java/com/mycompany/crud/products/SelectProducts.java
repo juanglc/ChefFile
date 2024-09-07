@@ -36,7 +36,7 @@ public class SelectProducts
         }
         catch (SQLException e)
         {
-            e.printStackTrace();
+            e.getErrorCode();
         }
     }
 
@@ -58,7 +58,7 @@ public class SelectProducts
         }
         catch(SQLException e)
         {
-            e.printStackTrace();
+            e.getErrorCode();
         }
     }
 
@@ -78,7 +78,7 @@ public class SelectProducts
         }
         catch (SQLException e)
         {
-            e.printStackTrace();
+            e.getErrorCode();
         }
     }
 
@@ -100,7 +100,7 @@ public class SelectProducts
         }
         catch (SQLException e)
         {
-            e.printStackTrace();
+            e.getErrorCode();
         }
         return product;
     }

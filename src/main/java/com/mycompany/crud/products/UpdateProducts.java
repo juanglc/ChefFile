@@ -25,7 +25,7 @@ public class UpdateProducts
         {
             if (!product.get(i).equals(comparison.get(i)))
             {
-                if (comparison.get(i).equals(""))
+                if (comparison.get(i).isEmpty())
                 {
                     continue;
                 }
@@ -48,7 +48,7 @@ public class UpdateProducts
         }
         catch (SQLException e)
         {
-            e.printStackTrace();
+            e.getErrorCode();
         }
     }
 
