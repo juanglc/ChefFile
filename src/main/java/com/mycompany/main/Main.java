@@ -1,5 +1,3 @@
-
-
 package com.mycompany.main;
 
 import com.mycompany.crud.clients.*;
